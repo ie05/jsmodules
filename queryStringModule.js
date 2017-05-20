@@ -1,10 +1,16 @@
-    var Module = (function () {
+var module = (function () {
                 
         var queryStringParser = {
               url: '',
               params: [],
-              removeDomainAndPathFromUrl: function(){
-                  this.url = this.url.replace(window.location,'');
+              cacheUrlQueryString: function(url){
+                  var href = url || window.location.toString();
+                  this.url = href.replace(
+                    window.location.protocol.toString() + '//' + 
+                    window.location.hostname.toString() +
+                    window.location.pathname.toString()
+                    ,'');
+                  console.log(this.url);
                   return this;
               },
               urIDecodeUrl: function(){
@@ -40,8 +46,9 @@
 
         }; // end module
         
+        // export
         return queryStringParser;
 
-    })(); // end module export
+})(); // end module export
 
-    // fiddle @ https://jsfiddle.net/handshy_proj/mse1mv1t/59/
+// fiddle @ https://jsfiddle.net/handshy_proj/mse1mv1t/
