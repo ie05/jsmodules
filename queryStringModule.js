@@ -4,6 +4,8 @@ var module = (function () {
               url: '',
               params: [],
               cacheUrlQueryString: function(url){
+                  // use window.location if a url string
+                  // is not provided
                   var href = url || window.location.toString();
                   this.url = href.replace(
                     window.location.protocol.toString() + '//' + 
